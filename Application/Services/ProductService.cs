@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
-using Domain.Models;
+using Application.DTO;
 
 namespace Application.Services;
 /// <summary>
@@ -14,9 +14,10 @@ public class ProductService : IProductService
     private readonly IProductRepository _productoCategoriaRepository;
 
     /// <summary>
-    /// Constructor del ProductService.
+    /// Constructor del <see cref="ProductService"/>.
     /// </summary>
     /// <param name="productRepository">El repositorio para acceder a los datos de los productos.</param>
+    /// <param name="productoCategoriaRepository">El repositorio específico para acceder a datos de productos, incluyendo relaciones.</param>
     /// <param name="categoriaRepository">El repositorio para acceder a los datos de las categorías.</param>
     public ProductService(IRepository<Producto> productRepository, IProductRepository productoCategoriaRepository, IRepository<Categoria> categoriaRepository)
     {
@@ -26,6 +27,11 @@ public class ProductService : IProductService
     }
 
 
+    /// <summary>
+    /// Obtiene un producto por su identificador único de forma asíncrona.
+    /// </summary>
+    /// <param name="id">El identificador único del producto a buscar.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene el <see cref="Producto"/> encontrado, o null si no existe.</returns>
     public async Task<Producto> GetProductByIdAsync(long id)
     {
         try
@@ -39,7 +45,10 @@ public class ProductService : IProductService
         }
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Obtiene todos los productos de forma asíncrona.
+    /// </summary>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene una colección de todos los <see cref="Producto"/>.</returns>
     public async Task<IEnumerable<Producto>> GetAllProductsAsync()
     {
         try
@@ -53,7 +62,11 @@ public class ProductService : IProductService
         }
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Obtiene una lista de productos por el nombre de su categoría de forma asíncrona.
+    /// </summary>
+    /// <param name="categoryName">El nombre de la categoría por la cual filtrar los productos.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene una lista de <see cref="Producto"/> que pertenecen a la categoría especificada.</returns>
     public async Task<List<Producto>> GetProductsByCategoryNameAsync(string categoryName)
     {
         try
@@ -66,7 +79,7 @@ public class ProductService : IProductService
             }
 
             List<Producto> filteredProducts = productEntity
-                .Where(p => p.IdCategoriaNavigation.CodigoCategoria.ToLower() == categoryName.ToLower())
+                .Where(p => p.IdCategoriaNavigation?.CodigoCategoria?.ToLower() == categoryName.ToLower())
                 .ToList();
 
             return filteredProducts;
@@ -78,8 +91,13 @@ public class ProductService : IProductService
         }
     }
 
-    /// <inheritdoc />
-    public async Task<Producto> CreateProductAsync(ProductoBM productModel)
+    /// <summary>
+    /// Crea un nuevo producto de forma asíncrona.
+    /// </summary>
+    /// <param name="productModel">El modelo de producto (<see cref="ProductoDTO"/>) con la información del nuevo producto.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene el <see cref="Producto"/> creado.</returns>
+    /// <exception cref="Exception">Se lanza una excepción si la categoría especificada en el modelo no existe.</exception>
+    public async Task<Producto> CreateProductAsync(ProductoDTO productModel)
     {
         try
         {
@@ -110,8 +128,14 @@ public class ProductService : IProductService
         }
     }
 
-    /// <inheritdoc />
-    public async Task UpdateProductAsync(long id, ProductoBM productModel)
+    /// <summary>
+    /// Actualiza un producto existente de forma asíncrona.
+    /// </summary>
+    /// <param name="id">El identificador único del producto a actualizar.</param>
+    /// <param name="productModel">El modelo de producto (<see cref="ProductoDTO"/>) con la información actualizada.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona.</returns>
+    /// <exception cref="Exception">Se lanza una excepción si el producto con el ID especificado no se encuentra o si la categoría especificada en el modelo no existe.</exception>
+    public async Task UpdateProductAsync(long id, ProductoDTO productModel)
     {
         try
         {
@@ -143,7 +167,12 @@ public class ProductService : IProductService
         }
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    /// Elimina un producto por su identificador único de forma asíncrona.
+    /// </summary>
+    /// <param name="id">El identificador único del producto a eliminar.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona.</returns>
+    /// <exception cref="Exception">Se lanza una excepción si ocurre un error durante la eliminación.</exception>
     public async Task DeleteProductAsync(long id)
     {
         try
@@ -157,16 +186,24 @@ public class ProductService : IProductService
         }
     }
 
+    /// <summary>
+    /// Obtiene una categoría por su nombre de forma asíncrona (método privado interno).
+    /// </summary>
+    /// <param name="categoryName">El nombre de la categoría a buscar.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene la <see cref="Categoria"/> encontrada, o null si no existe.</returns>
     private async Task<Categoria?> GetCategoryByNameAsync(string categoryName)
     {
         var categories = await _categoriaRepository.GetAllAsync();
         return categories.FirstOrDefault(c => c.CodigoCategoria.ToLower() == categoryName.ToLower());
     }
 
+    /// <summary>
+    /// Obtiene un producto por su identificador único de forma asíncrona (método privado interno).
+    /// </summary>
+    /// <param name="id">El identificador único del producto a buscar.</param>
+    /// <returns>Un <see cref="Task"/> que representa la operación asíncrona. El resultado contiene el <see cref="Producto"/> encontrado.</returns>
     private async Task<Producto> GetProductsByCategoryAsync(long id)
     {
         return await _productRepository.GetByIdAsync(id);
     }
 }
-
-

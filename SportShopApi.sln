@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{580ABABB-DD54-42DE-A573-30C84A5E3B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "infrastructure\infrastructure.csproj", "{6CAA2AB4-1271-46F3-A029-37D6FF910B32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "infrastructure\Infrastructure.csproj", "{6CAA2AB4-1271-46F3-A029-37D6FF910B32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportShopApiTest", "SportShopApiTest\SportShopApiTest.csproj", "{99B9B6A0-13DE-4931-B275-CC5C9C24D28A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportShopTest", "SportShopApiTest\SportShopTest.csproj", "{99B9B6A0-13DE-4931-B275-CC5C9C24D28A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

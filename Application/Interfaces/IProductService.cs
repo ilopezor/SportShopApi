@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Domain.Models;
+﻿using Application.DTO;
+using Domain.Entities;
 
 namespace Application.Interfaces
 {
@@ -32,14 +32,14 @@ namespace Application.Interfaces
         /// Creates a new product.
         /// </summary>
         /// <param name="productModel">The data of the product to create.</param>
-        Task<Producto> CreateProductAsync(ProductoBM productModel);
+        Task<Producto> CreateProductAsync(ProductoDTO productModel);
 
         /// <summary>
         /// Updates an existing product.
         /// </summary>
         /// <param name="id">The ID of the product to update.</param>
         /// <param name="productModel">The updated data of the product.</param>
-        Task UpdateProductAsync(long id, ProductoBM productModel);
+        Task UpdateProductAsync(long id, ProductoDTO productModel);
 
         /// <summary>
         /// Deletes a product by its ID.

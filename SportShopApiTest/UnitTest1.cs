@@ -1,10 +1,10 @@
 using Application.Interfaces.Repositories;
 using Application.Services;
 using Domain.Entities;
-using Domain.Models;
+using Application.DTO;
 using Moq;
 
-namespace SportShopApiTest
+namespace SportShopTest
 {
     public class ProductServiceTests
     {
@@ -34,7 +34,7 @@ namespace SportShopApiTest
             var mockProductRepository = new Mock<IRepository<Producto>>();
             var mockCategoryRepository = new Mock<IRepository<Categoria>>();
             var mockProductCategoryRepository = new Mock<IProductRepository>();
-            var productModel = new ProductoBM { Name = "New Product", Category = "NonExistent", Price = 10.0m, Stock = 5, Brand = "Brand" };
+            var productModel = new ProductoDTO { Name = "New Product", Category = "NonExistent", Price = 10.0m, Stock = 5, Brand = "Brand" };
 
             mockCategoryRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Categoria>()); // No categorías existentes
 
@@ -91,7 +91,7 @@ namespace SportShopApiTest
             var mockProductCategoryRepository = new Mock<IProductRepository>();
             var existingProduct = new Producto { IdProducto = productId, Name = "Original Name", IdCategoria = 1 };
             var mockCategoryEntity = new Categoria { IdCategoria = 1, CodigoCategoria = "Test" };
-            var productModel = new ProductoBM { Name = newName, Category = "Test", Price = 10.0m, Stock = 5, Brand = "Brand" };
+            var productModel = new ProductoDTO { Name = newName, Category = "Test", Price = 10.0m, Stock = 5, Brand = "Brand" };
 
             mockProductRepository.Setup(repo => repo.GetByIdAsync(productId)).ReturnsAsync(existingProduct);
             mockCategoryRepository.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Categoria> { mockCategoryEntity });

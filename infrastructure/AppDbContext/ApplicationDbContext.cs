@@ -9,19 +9,16 @@ namespace Infrastructure.AppDbContext
     public partial class ApplicationDbContext : DbContext
     {
         /// <summary>
-        /// Constructor sin parámetros para ApplicationDbContext.
-        /// </summary>
-        public ApplicationDbContext()
-        {
-        }
-
-        /// <summary>
         /// Constructor con opciones para ApplicationDbContext.
         /// </summary>
         /// <param name="options">Opciones de configuración del contexto.</param>
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            if (!this.Database.CanConnect())
+            {
+                throw new Exception("No se puede conectar a la base de datos.");
+            }
         }
 
         /// <summary>
@@ -40,8 +37,7 @@ namespace Infrastructure.AppDbContext
         /// <param name="optionsBuilder">Constructor para configurar las opciones del contexto.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Server=ISAAC-PC\\SQLEXPRESS;Database=SportShop;Trusted_Connection=True;Encrypt=False; MultipleActiveResultSets=true");
+            // Método dejado vacío intencionalmente. La configuración se realiza en Program.cs.
         }
 
         /// <summary>

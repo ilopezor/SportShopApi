@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
-using Domain.Models;
+using Application.DTO;
 
 namespace SportshopApi.Controllers
 {
@@ -68,7 +68,7 @@ namespace SportshopApi.Controllers
         /// <param name="modeloProducto">Modelo del producto a crear.</param>
         /// <returns>El producto creado.</returns>
         [HttpPost]
-        public async Task<ActionResult<Producto>> PostProducto(ProductoBM modeloProducto)
+        public async Task<ActionResult<Producto>> PostProducto(ProductoDTO modeloProducto)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace SportshopApi.Controllers
         /// <param name="modeloProducto">Modelo del producto con los datos actualizados.</param>
         /// <returns>Un resultado indicando el estado de la operación.</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(long id, ProductoBM modeloProducto)
+        public async Task<IActionResult> PutProducto(long id, ProductoDTO modeloProducto)
         {
             if (!ModelState.IsValid)
             {

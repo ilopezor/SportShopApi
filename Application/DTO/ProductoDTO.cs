@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models
+namespace Application.DTO
 {
     /// <summary>
     /// Representa un producto deportivo en la tienda.
     /// </summary>
-    public class ProductoBM
+    public class ProductoDTO
     {
         /// <summary>
         /// Nombre del producto.
