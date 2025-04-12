@@ -9,8 +9,8 @@ SportShopApi es una API web en .NET 6 nos proporsiona la gestion de los producto
 - Listado de Productos por Categoría: Permite obtener todos los productos pertenecientes a una categoría específica.
 - Estadísticas: Proporciona métricas sobre los productos almacenados en la base de datos.
 
-##Endpoints de la API
-###Productos
+## Endpoints de la API
+### Productos
  - **GET /api/Productos**
   - Descripción: Obtiene todos los productos.
   - Respuesta: Array JSON de objetos Producto.
