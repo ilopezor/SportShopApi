@@ -13,8 +13,9 @@ SportShopApi es una API web en .NET 6 nos proporsiona la gestion de los producto
 ###Productos
  - **GET /api/Productos**
 
-Descripción: Obtiene todos los productos.
-Respuesta: Array JSON de objetos Producto.
+- Descripción: Obtiene todos los productos.
+- Respuesta: Array JSON de objetos Producto.
+  
 Ejemplo:
 ```json
 [
@@ -39,9 +40,10 @@ Ejemplo:
 
 - **GET /api/Productos/{id}**
 
-Descripción: Obtiene un producto específico por su ID.
-Parámetro de Ruta: id (entero) - El ID del producto a obtener.
-Respuesta: Objeto JSON del Producto encontrado o código de estado 404 si no existe.
+- Descripción: Obtiene un producto específico por su ID.
+- Parámetro de Ruta: id (entero) - El ID del producto a obtener.
+- Respuesta: Objeto JSON del Producto encontrado o código de estado 404 si no existe.
+
 Ejemplo de Respuesta (200 OK):
 ```json
 {
@@ -55,9 +57,10 @@ Ejemplo de Respuesta (200 OK):
 ```
 - **POST /api/Productos**
 
-Descripción: Crea un nuevo producto.
-Request: Objeto JSON del Producto a crear (ver ejemplo).
-Respuesta: Objeto JSON del Producto creado con su ID asignado.
+- Descripción: Crea un nuevo producto.
+- Request: Objeto JSON del Producto a crear (ver ejemplo).
+- Respuesta: Objeto JSON del Producto creado con su ID asignado.
+
 Ejemplo de Request:
 ```json
 {
@@ -70,10 +73,11 @@ Ejemplo de Request:
 ```
 - **PUT /api/Productos/{id}**
 
-Descripción: Actualiza un producto existente por su ID.
-Parámetro de Ruta: id (entero) - El ID del producto a actualizar.
-Request: Objeto JSON con los datos actualizados del Producto.
-Respuesta: Código de estado 200 (Ok) si la actualización fue exitosa o 404 si el producto no existe.
+- Descripción: Actualiza un producto existente por su ID.
+- Parámetro de Ruta: id (entero) - El ID del producto a actualizar.
+- Request: Objeto JSON con los datos actualizados del Producto.
+- Respuesta: Código de estado 200 (Ok) si la actualización fue exitosa o 404 si el producto no existe.
+
 Ejemplo de Request:
 ```json
 {
@@ -86,16 +90,17 @@ Ejemplo de Request:
 ```
 - **DELETE /api/Productos/{id}**
 
-Descripción: Elimina un producto específico por su ID.
-Parámetro de Ruta: id (entero) - El ID del producto a eliminar.
-Respuesta: Código de estado 200 (Ok) si la eliminación fue exitosa o 404 si el producto no existe.
+- Descripción: Elimina un producto específico por su ID.
+- Parámetro de Ruta: id (entero) - El ID del producto a eliminar.
+- Respuesta: Código de estado 200 (Ok) si la eliminación fue exitosa o 404 si el producto no existe.
 
-- **Productos por Categoría**
-GET /api/Productos/categoria/{nombreCategoria}
+### Productos por Categoría
+- **GET /api/Productos/categoria/{nombreCategoria}**
 
-Descripción: Obtiene todos los productos pertenecientes a una categoría específica.
-Parámetro de Ruta: nombreCategoria (string) - El nombre de la categoría a filtrar (Ej: "Ropa", "Calzado").
-Respuesta: Array JSON de objetos Producto que pertenecen a la categoría especificada.
+- Descripción: Obtiene todos los productos pertenecientes a una categoría específica.
+- Parámetro de Ruta: nombreCategoria (string) - El nombre de la categoría a filtrar (Ej: "Ropa", "Calzado").
+- Respuesta: Array JSON de objetos Producto que pertenecen a la categoría especificada.
+
 Ejemplo de Respuesta para la categoría "Ropa":
 ```json
 [
@@ -118,17 +123,19 @@ Ejemplo de Respuesta para la categoría "Ropa":
 ]
 ```
 
-Estadísticas de Productos
-GET /api/Metricas/productos
+###Estadísticas de Productos
+- **GET /api/Metricas/productos**
+
+- Descripción: Obtiene estadísticas sobre los productos almacenados.
+- Respuesta: Objeto JSON con el conteo total de productos.
+
+Ejemplo:
 ```json
 {
     "total_productos": 150
 }
 ```
 
-Descripción: Obtiene estadísticas sobre los productos almacenados.
-Respuesta: Objeto JSON con el conteo total de productos.
-Ejemplo:
 
 ## Empezando
 ### Prerrequisitos
@@ -161,7 +168,7 @@ La documentación de la API está disponible a través de Swagger en la ruta ``/
 
 
 ## Creditos
-Este proyecto fue creado como parte de una prueba de ingreso a la empresa Mercado Libre.
+- Este proyecto fue creado como parte de una prueba de ingreso a la empresa Mercado Libre.
 
 ##Estado del Proyecto
 - Este proyecto se considera completo y listo para su uso.
