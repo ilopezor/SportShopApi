@@ -117,7 +117,7 @@ Ejemplo de Respuesta para la categoría "Ropa":
 ]
 ```
 
-###Estadísticas de Productos
+### Estadísticas de Productos
 - **GET /api/Metricas/productos**
  - Descripción: Obtiene estadísticas sobre los productos almacenados.
  - Respuesta: Objeto JSON con el conteo total de productos.
