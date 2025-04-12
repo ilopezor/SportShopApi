@@ -158,7 +158,9 @@ Ejemplo:
 
 ## Arquitectura
 - Hexagonal
-
+## Base de datos
+ - Para este ejecicio se escogió SQl Server ya que los datos utilizados para esta solución son estructurados y tienen realciones claras entre si.
+ - En la carpeta BackupDB en la raiz del proyecto se encuentra el el scrip de la base de datos utilizada
 
 ## Creditos
 - Este proyecto fue creado como parte de una prueba de ingreso a la empresa Mercado Libre.
