@@ -102,7 +102,7 @@ namespace SportshopApi.Controllers
             try
             {
                 await _productoService.UpdateProductAsync(id, modeloProducto);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -121,7 +121,7 @@ namespace SportshopApi.Controllers
             try
             {
                 await _productoService.DeleteProductAsync(id);
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

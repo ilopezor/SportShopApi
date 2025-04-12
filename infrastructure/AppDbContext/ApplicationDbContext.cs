@@ -32,15 +32,6 @@ namespace Infrastructure.AppDbContext
         public virtual DbSet<Producto> Productos { get; set; }
 
         /// <summary>
-        /// Configura las opciones del contexto de la base de datos.
-        /// </summary>
-        /// <param name="optionsBuilder">Constructor para configurar las opciones del contexto.</param>
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // Método dejado vacío intencionalmente. La configuración se realiza en Program.cs.
-        }
-
-        /// <summary>
         /// Define el esquema de la base de datos y sus relaciones.
         /// </summary>
         /// <param name="modelBuilder">Constructor para definir el modelo de la base de datos.</param>

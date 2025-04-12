@@ -103,9 +103,13 @@ public class ProductService : IProductService
         {
             var category = await GetCategoryByNameAsync(productModel.Category);
 
-            if (category == null)
+            if (category is null)
             {
-                throw new Exception($"The category '{productModel.Category}' does not exist.");
+                category = await _categoriaRepository.AddAsync(new Categoria
+                {
+                    CodigoCategoria = productModel.Category,
+                    DescripcionCategoria = productModel.Category,
+                });    
             }
 
             var productEntity = new Producto
@@ -146,9 +150,13 @@ public class ProductService : IProductService
             }
 
             var category = await GetCategoryByNameAsync(productModel.Category);
-            if (category == null)
+            if (category is null)
             {
-                throw new Exception($"The category '{productModel.Category}' does not exist.");
+                category = await _categoriaRepository.AddAsync(new Categoria
+                {
+                    CodigoCategoria = productModel.Category,
+                    DescripcionCategoria = productModel.Category,
+                });
             }
 
             existingProduct.Name = productModel.Name;
@@ -206,4 +214,5 @@ public class ProductService : IProductService
     {
         return await _productRepository.GetByIdAsync(id);
     }
+
 }

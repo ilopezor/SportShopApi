@@ -29,14 +29,14 @@ public partial class Categoria : BaseEntity
     /// Descripción de la categoría.
     /// </summary>
     [Column("descripcion_Categoria")]
-    [MaxLength(100)]
-    public byte[] DescripcionCategoria { get; set; } = null!;
+    [StringLength(255)]
+    public string DescripcionCategoria { get; set; } = null!;
 
     /// <summary>
     /// Fecha y hora de creación de la categoría.
     /// </summary>
     [Column("fecha_Creacion", TypeName = "datetime")]
-    public DateTime FechaCreacion { get; set; }
+    public DateTime? FechaCreacion { get; set; }
 
     /// <summary>
     /// Fecha y hora de la última actualización de la categoría (puede ser nulo).

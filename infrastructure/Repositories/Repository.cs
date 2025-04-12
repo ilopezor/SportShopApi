@@ -44,10 +44,11 @@ namespace Infrastructure.Repositories
         }
 
         /// <inheritdoc />
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);
+            var newEntity = await _context.Set<T>().AddAsync(entity);
             await _context.SaveChangesAsync();
+            return newEntity.Entity;
         }
 
         /// <inheritdoc />

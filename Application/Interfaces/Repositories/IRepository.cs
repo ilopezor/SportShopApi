@@ -25,7 +25,8 @@ namespace Application.Interfaces.Repositories
         /// Agrega una nueva entidad.
         /// </summary>
         /// <param name="entity">La entidad a agregar.</param>
-        Task AddAsync(T entity);
+        /// <returns>La entidad creada.</returns>
+        Task<T> AddAsync(T entity);
 
         /// <summary>
         /// Actualiza una entidad existente.
