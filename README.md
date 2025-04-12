@@ -1,7 +1,7 @@
 # SportShopApi
 
 
-SportShopApi es una API web en .NET 6 nos proporsiona la gestion de los productos de una tienda deportiva.
+SportShopApi es una API web en .NET 8 nos proporsiona la gestion de los productos de una tienda deportiva.
 
 ## Características
 
@@ -132,7 +132,7 @@ Ejemplo:
 
 ## Empezando
 ### Prerrequisitos
-  - .NET 6 SDK
+  - .NET 8 SDK
   - Git
     
 ### Instalación
@@ -163,12 +163,12 @@ Ejemplo:
 ## Creditos
 - Este proyecto fue creado como parte de una prueba de ingreso a la empresa Mercado Libre.
 
-##Estado del Proyecto
+## Estado del Proyecto
 - Este proyecto se considera completo y listo para su uso.
 
 
 ## Notas de la Versión
-- Se utiliza .NET 6.0 en el proyecto.
+- Se utiliza .NET 8 en el proyecto.
 - Implementación de funcionalidades CRUD para productos.
 - Endpoint para obtener productos por categoría.
 - Endpoint para obtener estadísticas básicas de productos.
